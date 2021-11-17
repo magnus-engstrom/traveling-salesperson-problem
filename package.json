@@ -1,6 +1,6 @@
 {
     "name": "traveling-salesperson-problem",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "description": "",
     "main": "server.js",
     "scripts": {
@@ -9,6 +9,7 @@
     "author": "Magnus Engström",
     "license": "MIT",
     "dependencies": {
-        "express": "^4.17.1"
+        "express": "^4.17.1",
+        "pg": "^8.5.1"
     }
 }
