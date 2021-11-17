@@ -174,7 +174,6 @@ const Game = (() => {
             connectNodes()
             CanvasRenderer.clear()
             if (nodeList.length > 1) CanvasRenderer.drawLines(nodeConncetions)
-            CanvasRenderer.drawNode([cX, cY, 10], [0,0,0,1])
             drawHubs()
             drawNodes()
         }
