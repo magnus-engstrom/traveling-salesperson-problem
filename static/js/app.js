@@ -99,7 +99,6 @@ const Game = (() => {
                 let b = y - y2
                 let c = Math.sqrt( a*a + b*b )
                 if (c < 20) {
-                    console.log("conflict")
                     ok = false
                 }
             })
@@ -124,12 +123,10 @@ const Game = (() => {
                 pathLength += pointsDistance( nodeList[i].x, nodeList[i].y, nodeList[i+1].x, nodeList[i+1].y)
             }
         }
-        console.log(nodes.filter(n => !n.active).length)
         if (nodes.filter(n => !n.active).length == 0) {
             nodeConncetions.push({'x1': nodeList[nodeList.length-1].x, 'y1': nodeList[nodeList.length-1].y, 'x2': nodeList[0].x, 'y2': nodeList[0].y})
             pathLength += pointsDistance( nodeList[nodeList.length-1].x, nodeList[nodeList.length-1].y, nodeList[0].x, nodeList[0].y)
         }
-        console.log(pathLength)
         pathLengthInfo.innerText = Math.round(pathLength)
     }
     nodesInHubs = ( )=> {
@@ -144,8 +141,8 @@ const Game = (() => {
             }
         })
         canvas.onclick = (e) => {
-            let cX = e.clientX - e.target.getBoundingClientRect().left
-            let cY = e.clientY - e.target.getBoundingClientRect().top
+            let cX = e.clientX - canvas.getBoundingClientRect().left
+            let cY = e.clientY - canvas.getBoundingClientRect().top
             let addHub = true
             nodes.forEach(node => {
                 if (Math.sqrt((cX-node.x) ** 2 + (cY-node.y) ** 2) < node.radius && !node.hubMember) {
@@ -177,6 +174,7 @@ const Game = (() => {
             connectNodes()
             CanvasRenderer.clear()
             if (nodeList.length > 1) CanvasRenderer.drawLines(nodeConncetions)
+            CanvasRenderer.drawNode([cX, cY, 10], [0,0,0,1])
             drawHubs()
             drawNodes()
         }

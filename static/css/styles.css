@@ -87,4 +87,6 @@ canvas {
     max-width: 500px;
     background-image: url("/img/grid.png");
     background-size: 25px;
+    width: 500px;
+    height: 500px;
 }
